@@ -43,14 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chords.cs" />
-    <Compile Include="Dichotomy.cs" />
+    <Compile Include="SolutionMethods\Chords.cs" />
+    <Compile Include="SolutionMethods\Dichotomy.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleIterations.cs" />
-    <Compile Include="SolutionMethod.cs" />
-    <Compile Include="Tangent.cs" />
+    <Compile Include="SolutionMethods\SimpleIterations.cs" />
+    <Compile Include="SolutionMethods\SolutionMethod.cs" />
+    <Compile Include="SolutionMethods\Tangent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
