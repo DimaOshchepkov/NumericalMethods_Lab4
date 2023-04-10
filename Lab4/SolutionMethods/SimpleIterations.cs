@@ -25,10 +25,10 @@ namespace Lab4
 
         public override double GetSolution(double begin, double end, double eps)
         {
-            double q = Function.MaximumInTheInterval(mapping.Df, begin, end);
+            double q = Math.Abs(Function.MaximumInTheInterval(mapping.Df, begin, end));
             double E1 = eps * (1 - q) / q;
 
-            if (q >= 0)
+            if (q >= 1)
                 throw new ArgumentException("В качестве аргумента передано не сжимающее отображение");
 
             int coutnIter = 0;

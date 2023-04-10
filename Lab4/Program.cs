@@ -11,14 +11,13 @@ namespace Lab4
         static void Main(string[] args)
         {
             Func<double, double> MyFunc = x => Math.Log(x) - 7 / (2 * x + 6);
-            Func<double, double> df = x => 7 / (2 * (x + 3) * (x + 3)) + 1 / x;
-            Func<double, double> ddf = x => -1 / (x * x) - 7 / (Math.Pow(x + 3, 3));
-            Func<double, double> mapping = x => (7 - 6 * Math.Log(x)) /
-                                        (2 * Math.Log(x));
+            //Func<double, double> df = x => 7 / (2 * (x + 3) * (x + 3)) + 1 / x;
+            //Func<double, double> ddf = x => -1 / (x * x) - 7 / (Math.Pow(x + 3, 3));
+            Func<double, double> mapping = x => Math.Exp(7 / (2 * x + 6));
 
-            Function f = new Function(MyFunc, df, ddf);
+            //Function f = new Function(MyFunc, df, ddf);
             Function f2 = new Function(MyFunc);
-
+            /*
             SolutionMethod dichotomy = new Dichotomy(f);
             double solution = dichotomy.GetSolution(1.5, 2.5, 1e-4);
             Console.WriteLine(solution);
@@ -34,23 +33,36 @@ namespace Lab4
             SolutionMethod tangent = new Tangent(f);
             solution = tangent.GetSolution(1.5, 2.5, 1e-4);
             Console.WriteLine(solution);
+            */
 
+            Console.WriteLine("Введите точность");
 
+            while (!double.TryParse(Console.ReadLine(), out double eps))
+                Console.WriteLine("Неправильный ввод, попробуйте по-другому");
+
+            Console.WriteLine("Dichotomy");
             SolutionMethod dichotomy2 = new Dichotomy(f2);
             double solution2 = dichotomy2.GetSolution(1.5, 2.5, 1e-4);
             Console.WriteLine(solution2);
+            Console.WriteLine();
 
+            Console.WriteLine("Chords");
             SolutionMethod chords2 = new Chords(f2);
             solution2 = chords2.GetSolution(1.5, 2.5, 1e-4);
             Console.WriteLine(solution2);
+            Console.WriteLine();
 
+            Console.WriteLine("SimpleIterations");
             SolutionMethod simpleIteration2 = new SimpleIterations(f2, mapping);
             solution2 = simpleIteration2.GetSolution(1.5, 2.5, 1e-4);
             Console.WriteLine(solution2);
+            Console.WriteLine();
 
+            Console.WriteLine("Tangent");
             SolutionMethod tangent2 = new Tangent(f2);
             solution2 = tangent2.GetSolution(1.5, 2.5, 1e-4);
             Console.WriteLine(solution2);
+            Console.WriteLine();
 
             Console.ReadKey();
         }
